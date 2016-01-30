@@ -1,0 +1,33 @@
+{
+	"name": "cubitt-commands",
+	"version": "0.5.0",
+	"description": "Module containing command definitions for the Cubitt framework",
+	"main": "dist/cubitt-commands.js",
+	"typings": "dist/cubitt-commands",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": "uu-cubitt/commands",
+	"keywords": [
+		"cubitt",
+		"cubitt-commands",
+		"commands"
+	],
+	"contributors": [
+		"Thomas Ipskamp <thomas.ipskamp@gmail.com>",
+		"Sander Klock <sander.klock@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/uu-cubitt/commands/issues"
+	},
+	"homepage": "https://uu-cubitt.github.io/commands",
+	"devDependencies": {
+		"typescript": "^1.7.5",
+		"typings": "^0.6.2",
+		"typedoc": "^0.3.12"
+	},
+	"dependencies": {
+		"cubitt-common": "~0.5.0"
+	}
+}
