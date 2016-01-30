@@ -1,7 +1,7 @@
 # Cubitt Commands
 Typescript CQRS command library for the Cubitt framework.
 
-[![npm version](https://badge.fury.io/js/cubitt-common.svg)](https://badge.fury.io/js/cubitt-commands)
+[![npm version](https://badge.fury.io/js/cubitt-commands.svg)](https://badge.fury.io/js/cubitt-commands)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/uu-cubitt/commands/master/LICENSE)
 
 ## About
