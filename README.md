@@ -1,11 +1,14 @@
 # Cubitt Commands
 Typescript CQRS command library for the Cubitt framework.
 
+[![npm version](https://badge.fury.io/js/cubitt-common.svg)](https://badge.fury.io/js/cubitt-commands)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/uu-cubitt/commands/master/LICENSE)
+
 ## About
 
 This library contains the commands available for editing the Cubitt Graph, they are handled by the command handler.
 For more information about the command handler, please take a look [here](https://uu-cubitt.github.io/command-handler/).
-The commands provide all basic graph operations, such as addition and removal of nodes, edges and connectors.
+The commands provide all basic graph operations, such as addition and removal of nodes, edges, models and connectors.
 For more information about the CQRS implementation of the Cubitt Graph, please take a look [here](https://uu-cubitt.github.io/).
 
 ## Installation
