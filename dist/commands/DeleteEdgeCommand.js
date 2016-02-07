@@ -11,6 +11,10 @@ var DeleteEdgeCommand = (function (_super) {
     function DeleteEdgeCommand(id, requestId, sessionId, elementId) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteConnector, elementId);
     }
+    DeleteEdgeCommand.prototype.parse = function (jsonObject) {
+        var obj = _super.prototype.parseCommand.call(this, jsonObject);
+        return new DeleteEdgeCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId']);
+    };
     return DeleteEdgeCommand;
 }(DeleteCommand_1.DeleteCommand));
 exports.DeleteEdgeCommand = DeleteEdgeCommand;

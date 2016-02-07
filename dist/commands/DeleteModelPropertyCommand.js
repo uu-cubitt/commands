@@ -11,6 +11,10 @@ var DeleteModelPropertyCommand = (function (_super) {
     function DeleteModelPropertyCommand(id, requestId, sessionId, elementId, propertyName) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteModelProperty, elementId, propertyName);
     }
+    DeleteModelPropertyCommand.prototype.parse = function (jsonObject) {
+        var obj = _super.prototype.parseCommand.call(this, jsonObject);
+        return new DeleteModelPropertyCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['propertyName'].toString());
+    };
     return DeleteModelPropertyCommand;
 }(DeletePropertyCommand_1.DeletePropertyCommand));
 exports.DeleteModelPropertyCommand = DeleteModelPropertyCommand;

@@ -6,4 +6,5 @@ export declare abstract class AddCommand extends Command {
     elementType: string;
     elementProperties: Common.Dictionary<any>;
     constructor(id: Common.Guid, requestId: Common.Guid, sessionId: Common.Guid, type: CommandType, elementId: Common.Guid, elementType: string, elementProperties: Common.Dictionary<any>);
+    protected parseCommand(jsonObject: Object): Object;
 }

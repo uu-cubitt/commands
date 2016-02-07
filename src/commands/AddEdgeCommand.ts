@@ -1,5 +1,6 @@
 import * as Common from "cubitt-common";
 
+import {Command} from "./Command";
 import {AddCommand} from "./AddCommand";
 import {CommandType} from "../CommandType";
 
@@ -25,19 +26,56 @@ export class AddEdgeCommand extends AddCommand {
 		elementId: Common.Guid,
 		elementType: string,
 		elementProperties: Common.Dictionary<any>,
-		/**
-		 * The RFC4122 v4 compliant ID of the model to which the new edge belongs
-		 */
 		public modelId: Common.Guid,
-		/**
-		 * The RFC4122 v4 compliant ID of the connector where the new edge starts
-		 */
 		public startConnectorId: Common.Guid,
-		/**
-		 * The RFC4122 v4 compliant ID of the connector where the new edge ends
-		 */
 		public endConnectorId: Common.Guid
 	) {
 		super(id, requestId, sessionId, CommandType.AddEdge, elementId, elementType, elementProperties);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public parse(jsonObject : Object) : Command {
+		var obj = super.parseCommand(jsonObject);
+
+		// Validate modelId
+		if (jsonObject['modelId'] == undefined) {
+			throw new Error("Model Identifier is missing");
+		}
+		var modelId = Common.Guid.parse(jsonObject['modelId']);
+		if (modelId == null) {
+			throw new Error("Invalid ModelId Identifier format");
+		}
+
+		// Validate startConnectorId
+		if (jsonObject['startConnectorId'] == undefined) {
+			throw new Error("StartConnector Identifier is missing");
+		}
+		var startConnectorId = Common.Guid.parse(jsonObject['startConnectorId']);
+		if (startConnectorId == null) {
+			throw new Error("Invalid StartConnector Identifier format");
+		}
+
+		// Validate endConnectorId
+		if (jsonObject['endConnectorId'] == undefined) {
+			throw new Error("EndConnector Identifier is missing");
+		}
+		var endConnectorId = Common.Guid.parse(jsonObject['endConnectorId']);
+		if (endConnectorId == null) {
+			throw new Error("Invalid EndConnector Identifier format");
+		}
+
+		return new AddEdgeCommand(
+			<Common.Guid>obj['id'],
+			<Common.Guid>obj['requestId'],
+			<Common.Guid>obj['sessionId'],
+			<Common.Guid>obj['elementId'],
+			obj['elementType'].toString(),
+			<Common.Dictionary<any>>obj['properties'],
+			modelId,
+			startConnectorId,
+			endConnectorId
+		);
 	}
 }

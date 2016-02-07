@@ -11,6 +11,10 @@ var DeleteModelCommand = (function (_super) {
     function DeleteModelCommand(id, requestId, sessionId, elementId) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteConnector, elementId);
     }
+    DeleteModelCommand.prototype.parse = function (jsonObject) {
+        var obj = _super.prototype.parseCommand.call(this, jsonObject);
+        return new DeleteModelCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId']);
+    };
     return DeleteModelCommand;
 }(DeleteCommand_1.DeleteCommand));
 exports.DeleteModelCommand = DeleteModelCommand;

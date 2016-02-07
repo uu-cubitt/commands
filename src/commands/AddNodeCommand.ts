@@ -1,5 +1,6 @@
 import * as Common from "cubitt-common";
 
+import {Command} from "./Command";
 import {AddCommand} from "./AddCommand";
 import {CommandType} from "../CommandType";
 
@@ -23,11 +24,34 @@ export class AddNodeCommand extends AddCommand {
 		elementId: Common.Guid,
 		elementType: string,
 		elementProperties: Common.Dictionary<any>,
-		/**
-		 * The RFC4122 v4 compliant ID of the model to which the new node belongs
-		 */
 		public modelId: Common.Guid
 	) {
 		super(id, requestId, sessionId, CommandType.AddNode, elementId, elementType, elementProperties);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public parse(jsonObject : Object) : Command {
+		var obj = super.parseCommand(jsonObject);
+
+		// Validate modelId
+		if (jsonObject['modelId'] == undefined) {
+			throw new Error("Model Identifier is missing");
+		}
+		var modelId = Common.Guid.parse(jsonObject['modelId']);
+		if (modelId == null) {
+			throw new Error("Invalid ModelId Identifier format");
+		}
+
+		return new AddNodeCommand(
+			<Common.Guid>obj['id'],
+			<Common.Guid>obj['requestId'],
+			<Common.Guid>obj['sessionId'],
+			<Common.Guid>obj['elementId'],
+			obj['elementType'].toString(),
+			<Common.Dictionary<any>>obj['properties'],
+			modelId	
+		);
 	}
 }

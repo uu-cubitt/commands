@@ -1,5 +1,6 @@
 import * as Common from "cubitt-common";
 
+import {Command} from "./Command";
 import {SetPropertyCommand} from "./SetPropertyCommand";
 import {CommandType} from "../CommandType";
 
@@ -13,17 +14,32 @@ export class SetConnectorPropertyCommand extends SetPropertyCommand {
 	 * @param sessionId The RFC4122 v4 compliant ID of the session that created this command
 	 * @param elementId The RFC4122 v4 compliant ID of the connector with the property that has to be set
 	 * @param propertyName The name of the property that has to be set
-	 * @oaram propertyValue The value of the property that has to be set
+	 * @param propertyValue The value of the property that has to be set
 	 */
 	constructor(
 		id: Common.Guid,
 		requestId: Common.Guid,
 		sessionId: Common.Guid,
-		type: CommandType,
 		elementId: Common.Guid,
 		propertyName: string,
 		propertyValue: any
 	) {
 		super(id, requestId, sessionId, CommandType.SetConnectorProperty, elementId, propertyName, propertyValue);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public parse(jsonObject : Object) : Command {
+		var obj = super.parseCommand(jsonObject);
+
+		return new SetConnectorPropertyCommand(
+			<Common.Guid>obj['id'],
+			<Common.Guid>obj['requestId'],
+			<Common.Guid>obj['sessionId'],
+			<Common.Guid>obj['elementId'],
+			obj['propertyName'].toString(),
+			obj['propertyValue']
+		);
 	}
 }

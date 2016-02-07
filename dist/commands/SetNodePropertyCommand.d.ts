@@ -1,6 +1,7 @@
 import * as Common from "cubitt-common";
+import { Command } from "./Command";
 import { SetPropertyCommand } from "./SetPropertyCommand";
-import { CommandType } from "../CommandType";
 export declare class SetNodePropertyCommand extends SetPropertyCommand {
-    constructor(id: Common.Guid, requestId: Common.Guid, sessionId: Common.Guid, type: CommandType, elementId: Common.Guid, propertyName: string, propertyValue: any);
+    constructor(id: Common.Guid, requestId: Common.Guid, sessionId: Common.Guid, elementId: Common.Guid, propertyName: string, propertyValue: any);
+    parse(jsonObject: Object): Command;
 }

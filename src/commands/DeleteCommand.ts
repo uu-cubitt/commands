@@ -18,11 +18,25 @@ export abstract class DeleteCommand extends Command {
 		requestId: Common.Guid,
 		sessionId: Common.Guid,
 		type: CommandType,
-		/**
-		 * The RFC4122 v4 compliant ID of the element that has to be deleted
-		 */
 		public elementId: Common.Guid
 	) {
 		super(id, requestId, sessionId, type);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	protected parseCommand(jsonObject: Object) : Object {
+		var obj = super.parseCommand(jsonObject);
+		// ElementId
+		if (jsonObject['elementId'] == undefined) {
+			throw new Error("Element Identifier is missing");
+		}
+		var elementId = Common.Guid.parse(jsonObject['elementId']);
+		if (elementId == null) {
+			throw new Error("Invalid Element Identifier format");
+		}
+		obj['elementId'] = elementId;
+		return obj;
 	}
 }

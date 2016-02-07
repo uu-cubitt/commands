@@ -11,6 +11,10 @@ var DeleteNodePropertyCommand = (function (_super) {
     function DeleteNodePropertyCommand(id, requestId, sessionId, elementId, propertyName) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteNodeProperty, elementId, propertyName);
     }
+    DeleteNodePropertyCommand.prototype.parse = function (jsonObject) {
+        var obj = _super.prototype.parseCommand.call(this, jsonObject);
+        return new DeleteNodePropertyCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['propertyName'].toString());
+    };
     return DeleteNodePropertyCommand;
 }(DeletePropertyCommand_1.DeletePropertyCommand));
 exports.DeleteNodePropertyCommand = DeleteNodePropertyCommand;

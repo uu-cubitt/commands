@@ -16,3 +16,6 @@ export declare enum CommandType {
     DeleteModelProperty = 14,
     DeleteNodeProperty = 15,
 }
+export declare class CommandTypes {
+    static fromString(com: string): CommandType;
+}

@@ -11,6 +11,10 @@ var DeleteConnectorCommand = (function (_super) {
     function DeleteConnectorCommand(id, requestId, sessionId, elementId) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteConnector, elementId);
     }
+    DeleteConnectorCommand.prototype.parse = function (jsonObject) {
+        var obj = _super.prototype.parseCommand.call(this, jsonObject);
+        return new DeleteConnectorCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId']);
+    };
     return DeleteConnectorCommand;
 }(DeleteCommand_1.DeleteCommand));
 exports.DeleteConnectorCommand = DeleteConnectorCommand;
