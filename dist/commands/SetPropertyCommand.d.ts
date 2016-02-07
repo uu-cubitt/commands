@@ -6,5 +6,4 @@ export declare abstract class SetPropertyCommand extends Command {
     propertyName: string;
     propertyValue: any;
     constructor(id: Common.Guid, requestId: Common.Guid, sessionId: Common.Guid, type: CommandType, elementId: Common.Guid, propertyName: string, propertyValue: any);
-    protected parseCommand(jsonObject: Object): Object;
 }

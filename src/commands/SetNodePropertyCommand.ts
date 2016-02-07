@@ -26,20 +26,4 @@ export class SetNodePropertyCommand extends SetPropertyCommand {
 	) {
 		super(id, requestId, sessionId, CommandType.SetConnectorProperty, elementId, propertyName, propertyValue);
 	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public parse(jsonObject : Object) : Command {
-		var obj = super.parseCommand(jsonObject);
-
-		return new SetNodePropertyCommand(
-			<Common.Guid>obj['id'],
-			<Common.Guid>obj['requestId'],
-			<Common.Guid>obj['sessionId'],
-			<Common.Guid>obj['elementId'],
-			obj['propertyName'].toString(),
-			obj['propertyValue']
-		);
-	}
 }

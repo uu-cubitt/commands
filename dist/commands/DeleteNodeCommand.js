@@ -11,10 +11,6 @@ var DeleteNodeCommand = (function (_super) {
     function DeleteNodeCommand(id, requestId, sessionId, elementId) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteConnector, elementId);
     }
-    DeleteNodeCommand.prototype.parse = function (jsonObject) {
-        var obj = _super.prototype.parseCommand.call(this, jsonObject);
-        return new DeleteNodeCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId']);
-    };
     return DeleteNodeCommand;
 }(DeleteCommand_1.DeleteCommand));
 exports.DeleteNodeCommand = DeleteNodeCommand;

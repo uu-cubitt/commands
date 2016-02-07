@@ -1,6 +1,5 @@
 import * as Common from "cubitt-common";
 
-import {Command} from "./Command";
 import {AddCommand} from "./AddCommand";
 import {CommandType} from "../CommandType";
 
@@ -27,30 +26,5 @@ export class AddConnectorCommand extends AddCommand {
 		public nodeId: Common.Guid
 	) {
 		super(id, requestId, sessionId, CommandType.AddConnector, elementId, elementType, elementProperties);
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public parse(jsonObject : Object) : Command {
-		var obj = super.parseCommand(jsonObject);
-
-		// Validate nodeId
-		if (jsonObject['nodeId'] == undefined) {
-			throw new Error("Node Identifier is missing");
-		}
-		var nodeId = Common.Guid.parse(jsonObject['nodeId']);
-		if (nodeId == null) {
-			throw new Error("Invalid NodeId Identifier format");
-		}
-		return new AddConnectorCommand(
-			<Common.Guid>obj['id'],
-			<Common.Guid>obj['requestId'],
-			<Common.Guid>obj['sessionId'],
-			<Common.Guid>obj['elementId'],
-			obj['elementType'].toString(),
-			<Common.Dictionary<any>>obj['properties'],
-			nodeId
-		);
 	}
 }

@@ -1,3 +1,4 @@
+export { CommandFactory } from "./CommandFactory";
 export * from "./CommandType";
 export * from "./commands/Command";
 export * from "./commands/AddCommand";

@@ -11,10 +11,6 @@ var SetEdgePropertyCommand = (function (_super) {
     function SetEdgePropertyCommand(id, requestId, sessionId, elementId, propertyName, propertyValue) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.SetConnectorProperty, elementId, propertyName, propertyValue);
     }
-    SetEdgePropertyCommand.prototype.parse = function (jsonObject) {
-        var obj = _super.prototype.parseCommand.call(this, jsonObject);
-        return new SetEdgePropertyCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['propertyName'].toString(), obj['propertyValue']);
-    };
     return SetEdgePropertyCommand;
 }(SetPropertyCommand_1.SetPropertyCommand));
 exports.SetEdgePropertyCommand = SetEdgePropertyCommand;

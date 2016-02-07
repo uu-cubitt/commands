@@ -7,6 +7,4 @@ export declare abstract class Command {
     type: CommandType;
     constructor(id: Common.Guid, requestId: Common.Guid, sessionId: Common.Guid, type: CommandType);
     toJson(): string;
-    abstract parse(jsonObject: Object): Command;
-    protected parseCommand(jsonObject: Object): Object;
 }

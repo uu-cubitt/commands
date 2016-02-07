@@ -25,18 +25,4 @@ export class DeleteNodePropertyCommand extends DeletePropertyCommand {
 		super(id, requestId, sessionId, CommandType.DeleteNodeProperty, elementId, propertyName);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
-	public parse(jsonObject : Object) : Command {
-		var obj = super.parseCommand(jsonObject);
-
-		return new DeleteNodePropertyCommand(
-			<Common.Guid>obj['id'],
-			<Common.Guid>obj['requestId'],
-			<Common.Guid>obj['sessionId'],
-			<Common.Guid>obj['elementId'],
-			obj['propertyName'].toString()
-		);
-	}
 }

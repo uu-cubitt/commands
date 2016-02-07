@@ -26,38 +26,4 @@ export abstract class AddCommand extends Command {
 	) {
 		super(id, requestId, sessionId, type);
 	}
-
-	/**
-	 * @inheritdoc
-	 */
-	protected parseCommand(jsonObject: Object) : Object {
-		var obj = super.parseCommand(jsonObject);
-
-		// ElementId
-		if (jsonObject['elementId'] == undefined) {
-			throw new Error("Element Identifier is missing");
-		}
-		var elementId = Common.Guid.parse(jsonObject['elementId']);
-		if (elementId == null) {
-			throw new Error("Invalid Element Identifier format");
-		}
-
-		// Element Type
-		if (jsonObject['elementType'] == undefined || jsonObject['elementType'].toString().trim().length == 0) {
-			throw new Error("Element Type is missing or empty");
-		}
-		var elementType = jsonObject['elementType'];
-
-		// Optional properties
-		var properties = {};
-		if (jsonObject['properties'] != undefined) {
-			properties = jsonObject['properties'];
-			// Ensure 'type' is not set in the properties array
-			delete properties["type"];
-		}
-		obj["elementId"] = elementId;
-		obj["elementType"] = elementType;
-		obj["properties"] = properties;
-		return obj;
-	}
 }

@@ -22,21 +22,4 @@ export abstract class DeleteCommand extends Command {
 	) {
 		super(id, requestId, sessionId, type);
 	}
-
-	/**
-	 * @inheritdoc
-	 */
-	protected parseCommand(jsonObject: Object) : Object {
-		var obj = super.parseCommand(jsonObject);
-		// ElementId
-		if (jsonObject['elementId'] == undefined) {
-			throw new Error("Element Identifier is missing");
-		}
-		var elementId = Common.Guid.parse(jsonObject['elementId']);
-		if (elementId == null) {
-			throw new Error("Invalid Element Identifier format");
-		}
-		obj['elementId'] = elementId;
-		return obj;
-	}
 }

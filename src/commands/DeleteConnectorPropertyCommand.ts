@@ -24,19 +24,4 @@ export class DeleteConnectorPropertyCommand extends DeletePropertyCommand {
 	) {
 		super(id, requestId, sessionId, CommandType.DeleteConnectorProperty, elementId, propertyName);
 	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public parse(jsonObject : Object) : Command {
-		var obj = super.parseCommand(jsonObject);
-
-		return new DeleteConnectorPropertyCommand(
-			<Common.Guid>obj['id'],
-			<Common.Guid>obj['requestId'],
-			<Common.Guid>obj['sessionId'],
-			<Common.Guid>obj['elementId'],
-			obj['propertyName'].toString()
-		);
-	}
 }

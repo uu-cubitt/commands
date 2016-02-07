@@ -2,6 +2,8 @@
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
+var CommandFactory_1 = require("./CommandFactory");
+exports.CommandFactory = CommandFactory_1.CommandFactory;
 __export(require("./CommandType"));
 __export(require("./commands/Command"));
 __export(require("./commands/AddCommand"));

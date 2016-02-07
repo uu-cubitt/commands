@@ -11,10 +11,6 @@ var SetModelPropertyCommand = (function (_super) {
     function SetModelPropertyCommand(id, requestId, sessionId, elementId, propertyName, propertyValue) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.SetConnectorProperty, elementId, propertyName, propertyValue);
     }
-    SetModelPropertyCommand.prototype.parse = function (jsonObject) {
-        var obj = _super.prototype.parseCommand.call(this, jsonObject);
-        return new SetModelPropertyCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['propertyName'].toString(), obj['propertyValue']);
-    };
     return SetModelPropertyCommand;
 }(SetPropertyCommand_1.SetPropertyCommand));
 exports.SetModelPropertyCommand = SetModelPropertyCommand;

@@ -11,10 +11,6 @@ var DeleteConnectorPropertyCommand = (function (_super) {
     function DeleteConnectorPropertyCommand(id, requestId, sessionId, elementId, propertyName) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.DeleteConnectorProperty, elementId, propertyName);
     }
-    DeleteConnectorPropertyCommand.prototype.parse = function (jsonObject) {
-        var obj = _super.prototype.parseCommand.call(this, jsonObject);
-        return new DeleteConnectorPropertyCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['propertyName'].toString());
-    };
     return DeleteConnectorPropertyCommand;
 }(DeletePropertyCommand_1.DeletePropertyCommand));
 exports.DeleteConnectorPropertyCommand = DeleteConnectorPropertyCommand;

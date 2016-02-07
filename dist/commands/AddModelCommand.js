@@ -11,10 +11,6 @@ var AddModelCommand = (function (_super) {
     function AddModelCommand(id, requestId, sessionId, elementId, elementType, elementProperties) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.AddModel, elementId, elementType, elementProperties);
     }
-    AddModelCommand.prototype.parse = function (jsonObject) {
-        var obj = _super.prototype.parseCommand.call(this, jsonObject);
-        return new AddModelCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['elementType'].toString(), obj['properties']);
-    };
     return AddModelCommand;
 }(AddCommand_1.AddCommand));
 exports.AddModelCommand = AddModelCommand;

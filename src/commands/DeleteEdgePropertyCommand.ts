@@ -1,6 +1,5 @@
 import * as Common from "cubitt-common";
 
-import {Command} from "./Command";
 import {DeletePropertyCommand} from "./DeletePropertyCommand";
 import {CommandType} from "../CommandType";
 
@@ -23,20 +22,5 @@ export class DeleteEdgePropertyCommand extends DeletePropertyCommand {
 		propertyName: string
 	) {
 		super(id, requestId, sessionId, CommandType.DeleteEdgeProperty, elementId, propertyName);
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public parse(jsonObject : Object) : Command {
-		var obj = super.parseCommand(jsonObject);
-
-		return new DeleteEdgePropertyCommand(
-			<Common.Guid>obj['id'],
-			<Common.Guid>obj['requestId'],
-			<Common.Guid>obj['sessionId'],
-			<Common.Guid>obj['elementId'],
-			obj['propertyName'].toString()
-		);
 	}
 }

@@ -11,10 +11,6 @@ var SetConnectorPropertyCommand = (function (_super) {
     function SetConnectorPropertyCommand(id, requestId, sessionId, elementId, propertyName, propertyValue) {
         _super.call(this, id, requestId, sessionId, CommandType_1.CommandType.SetConnectorProperty, elementId, propertyName, propertyValue);
     }
-    SetConnectorPropertyCommand.prototype.parse = function (jsonObject) {
-        var obj = _super.prototype.parseCommand.call(this, jsonObject);
-        return new SetConnectorPropertyCommand(obj['id'], obj['requestId'], obj['sessionId'], obj['elementId'], obj['propertyName'].toString(), obj['propertyValue']);
-    };
     return SetConnectorPropertyCommand;
 }(SetPropertyCommand_1.SetPropertyCommand));
 exports.SetConnectorPropertyCommand = SetConnectorPropertyCommand;
