@@ -1,6 +1,5 @@
 import * as Common from "cubitt-common";
 
-import {Command} from "./Command";
 import {DeletePropertyCommand} from "./DeletePropertyCommand";
 import {CommandType} from "../CommandType";
 

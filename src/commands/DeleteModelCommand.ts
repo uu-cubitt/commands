@@ -19,7 +19,7 @@ export class DeleteModelCommand extends DeleteCommand {
 		sessionId: Common.Guid,
 		elementId: Common.Guid
 	) {
-		super(id, requestId, sessionId, CommandType.DeleteConnector, elementId)
+		super(id, requestId, sessionId, CommandType.DeleteConnector, elementId);
 	}
 
 }

@@ -37,7 +37,7 @@ export abstract class Command {
 	/**
 	 * Returns JSON representation of this command
 	 */
-	toJson(): string {
+	public toJson(): string {
 		return JSON.stringify(this);
 	}
 }

@@ -1,6 +1,5 @@
 import * as Common from "cubitt-common";
 
-import {Command} from "./Command";
 import {SetPropertyCommand} from "./SetPropertyCommand";
 import {CommandType} from "../CommandType";
 
