@@ -1,8 +1,11 @@
 # Cubitt Commands
+
 Typescript CQRS command library for the Cubitt framework.
 
-[![npm version](https://badge.fury.io/js/cubitt-commands.svg)](https://badge.fury.io/js/cubitt-commands)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/uu-cubitt/commands/master/LICENSE)
+[![npm version](https://badge.fury.io/js/cubitt-commands.svg)](https://badge.fury.io/js/cubitt-commands)
+[![Build Status](https://travis-ci.org/uu-cubitt/commands.svg?branch=master)](https://travis-ci.org/uu-cubitt/commads)
+[![Test Coverage](https://codeclimate.com/github/uu-cubitt/commands/badges/coverage.svg)](https://codeclimate.com/github/uu-cubitt/commands/coverage)
 
 ## About
 
@@ -11,15 +14,21 @@ For more information about the command handler, please take a look [here](https:
 The commands provide all basic graph operations, such as addition and removal of nodes, edges, models and connectors.
 For more information about the CQRS implementation of the Cubitt Graph, please take a look [here](https://uu-cubitt.github.io/).
 
-## Installation
-
-```bash
-$ npm install cubitt-commands
-```
-
 ## Features
 
-* 16 CQRS commands for a human readable command stream
+* 16 CQRS commands for a human readable command stream.
+
+## Usage
+
+Install the package and then use it in your code.
+
+```bash
+npm install cubitt-commands
+```
+
+```typescript
+import * as Commands from "cubitt-commands";
+```
 
 ## Documentation
 
@@ -28,16 +37,34 @@ $ npm install cubitt-commands
 
 ## For developers
 
-To generate documentation run:
+To get started:
+
 ```bash
-$ npm install --only=dev
-$ node_modules/.bin/typedoc --out doc/ --module commonjs --target ES5 --mode file src/
+npm run dev
 ```
 
-## People
+To run the unit tests:
 
-The original authors of Cubitt are Sander Klock and Thomas Ipskamp. The project is coordinated by [Jan Martijn van der Werf](http://www.uu.nl/staff/JMEMvanderWerf).
+```bash
+npm run test
+```
+
+To generate a test coverage report:
+
+```bash
+npm run test-coverage
+```
+
+To generate documentation:
+
+```bash
+npm run typedoc
+```
 
 ## License
 
 [MIT](LICENSE)
+
+## Changelog
+
+[Changelog](changelog.md)

@@ -1,46 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "noImplicitAny": false,
-        "removeComments": true,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "declaration": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "outDir": "../dist/"
-    },
-    "filesGlob": [
-        "./**/*.ts",
-        "!./node_modules/**/*.ts"
-    ],
-    "files": [
-        "./CommandFactory.ts",
-        "./commands/AddCommand.ts",
-        "./commands/AddConnectorCommand.ts",
-        "./commands/AddEdgeCommand.ts",
-        "./commands/AddModelCommand.ts",
-        "./commands/AddNodeCommand.ts",
-        "./commands/Command.ts",
-        "./commands/DeleteCommand.ts",
-        "./commands/DeleteConnectorCommand.ts",
-        "./commands/DeleteConnectorPropertyCommand.ts",
-        "./commands/DeleteEdgeCommand.ts",
-        "./commands/DeleteEdgePropertyCommand.ts",
-        "./commands/DeleteModelCommand.ts",
-        "./commands/DeleteModelPropertyCommand.ts",
-        "./commands/DeleteNodeCommand.ts",
-        "./commands/DeleteNodePropertyCommand.ts",
-        "./commands/DeletePropertyCommand.ts",
-        "./commands/SetConnectorPropertyCommand.ts",
-        "./commands/SetEdgePropertyCommand.ts",
-        "./commands/SetModelPropertyCommand.ts",
-        "./commands/SetNodePropertyCommand.ts",
-        "./commands/SetPropertyCommand.ts",
-        "./CommandType.ts",
-        "./cubitt-commands.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+	"version": "1.0.0",
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"noImplicitAny": true,
+		"removeComments": true,
+		"noLib": false,
+		"preserveConstEnums": true,
+		"declaration": true,
+		"suppressImplicitAnyIndexErrors": false,
+		"outDir": "./../dist/",
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnreachableCode": false,
+		"forceConsistentCasingInFileNames": true,
+		"sourceMap": true
+	},
+	"exclude": [
+		"typings/browser",
+		"typings/browser.d.ts"
+	]
 }
