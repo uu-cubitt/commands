@@ -1,5 +1,5 @@
 /**
- * All possible types of commands
+ * An enum of all types of commands.
  */
 export enum CommandType {
 	AddConnector,

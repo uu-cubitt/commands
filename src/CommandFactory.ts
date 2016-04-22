@@ -20,10 +20,15 @@ import {SetModelPropertyCommand} from "./commands/SetModelPropertyCommand";
 import {SetNodePropertyCommand} from "./commands/SetNodePropertyCommand";
 
 /**
- * Factory for creation of Commands from JSON objects
+ * Factory for creation of Commands from JSON objects.
  */
 export class CommandFactory {
 
+	/**
+	 * Attempts to create a Command from a JSON object.
+	 * 
+	 * @param jsonObject JSON Object representing the Command.
+	 */
 	public static parse(jsonObject: Object): Command {
 		if (jsonObject === undefined) {
 			throw new Error("Empty command");
@@ -81,10 +86,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an AddConnectorCommand
+	 * Attempts to create an AddConnectorCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseAddConnectorCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): AddConnectorCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -104,10 +109,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an AddEdgeCommand
+	 * Attempts to create an AddEdgeCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseAddEdgeCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): AddEdgeCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -131,10 +136,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an AddModelCommand
+	 * Attempts to create an AddModelCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseAddModelCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): AddModelCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -152,10 +157,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an AddNodeCommand
+	 * Attempts to create an AddNodeCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseAddNodeCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): AddNodeCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -175,10 +180,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an DeleteConnectorCommand
+	 * Attempts to create an DeleteConnectorCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteConnectorCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteConnectorCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -192,10 +197,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an DeleteEdgeCommand
+	 * Attempts to create an DeleteEdgeCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteEdgeCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteEdgeCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -209,10 +214,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an DeleteModelCommand
+	 * Attempts to create an DeleteModelCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteModelCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteModelCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -226,10 +231,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create an DeleteNodeCommand
+	 * Attempts to create an DeleteNodeCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteNodeCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteNodeCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -243,10 +248,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a DeleteConnectorPropertyCommand
+	 * Attempts to create a DeleteConnectorPropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteConnectorPropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteConnectorPropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -262,10 +267,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a DeleteEdgePropertyCommand
+	 * Attempts to create a DeleteEdgePropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteEdgePropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteEdgePropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -281,10 +286,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a DeleteModelPropertyCommand
+	 * Attempts to create a DeleteModelPropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteModelPropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteModelPropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -300,10 +305,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a DeleteNodePropertyCommand
+	 * Attempts to create a DeleteNodePropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseDeleteNodePropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): DeleteNodePropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -319,10 +324,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a SetConnectorPropertyCommand
+	 * Attempts to create a SetConnectorPropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseSetConnectorPropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): SetConnectorPropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -340,10 +345,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a SetEdgePropertyCommand
+	 * Attempts to create a SetEdgePropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseSetEdgePropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): SetEdgePropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -361,10 +366,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a SetModelPropertyCommand
+	 * Attempts to create a SetModelPropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseSetModelPropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): SetModelPropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -382,10 +387,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a SetNodePropertyCommand
+	 * Attempts to create a SetNodePropertyCommand.
 	 *
-	 * @param jsonObject JSON Object representing the Command
-	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes
+	 * @param jsonObject JSON Object representing the Command.
+	 * @param keys Keys of the jsonObject that will be validated against the matched ValidationTypes.
 	 */
 	protected static parseSetNodePropertyCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): SetNodePropertyCommand {
 		keys["elementId"] = ValidationType.Guid;
@@ -403,10 +408,10 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Validates the keys of the passed objects against the passed ValidationTypes
+	 * Validates the keys of the passed objects against the passed ValidationTypes.
 	 *
-	 * @param object Object that should be validated
-	 * @param keysWithType Dictionary of the keys that will be validated, with as value the type of validation
+	 * @param object Object that should be validated.
+	 * @param keysWithType Dictionary of the keys that will be validated, with as value the type of validation.
 	 */
 	protected static validateObject(object: Object, keysWithType: Common.Dictionary<ValidationType>): void {
 		for (let key in keysWithType) {
@@ -436,9 +441,9 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Parses a properties object and returns a valid properties object
+	 * Parses a properties object and returns a valid properties object.
 	 *
-	 * @param properties
+	 * @param properties.
 	 */
 	protected static parseProperties(properties: Object): Common.Dictionary<any> {
 		if (properties === undefined) {
@@ -451,9 +456,9 @@ export class CommandFactory {
 	}
 
 	/**
-	 * Attempts to create a CommandType from a string
+	 * Attempts to create a CommandType from a string.
 	 *
-	 * @param type string containing a CommandType text
+	 * @param type string containing a CommandType text.
 	 */
 	protected static getCommandType(type: string): CommandType {
 		let t: string = type.toLowerCase();
