@@ -11,7 +11,8 @@
 		"test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- ./dist/test/ -R spec && remap-istanbul -i ./coverage/coverage.json -o ./coverage/coverage.json && istanbul report lcov",
 		"dev": "npm install && npm run lint && npm run build",
 		"codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
-		"typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/"
+		"typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/",
+		"typedoc": "echo \"ERROR: This module uses typescript constructs not supported by typedoc which at the moment still uses TypeScript 1.6.2\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
