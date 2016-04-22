@@ -89,8 +89,8 @@
 		"trailing-comma": [
 			true,
 			{
-				"multiline": "always",
-				"singleline": "always"
+				"multiline": "never",
+				"singleline": "never"
 			}
 		],
 		"triple-equals": [
