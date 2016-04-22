@@ -4,7 +4,7 @@ Typescript CQRS command library for the Cubitt framework.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/uu-cubitt/commands/master/LICENSE)
 [![npm version](https://badge.fury.io/js/cubitt-commands.svg)](https://badge.fury.io/js/cubitt-commands)
-[![Build Status](https://travis-ci.org/uu-cubitt/commands.svg?branch=master)](https://travis-ci.org/uu-cubitt/commads)
+[![Build Status](https://travis-ci.org/uu-cubitt/commands.svg?branch=master)](https://travis-ci.org/uu-cubitt/commands)
 [![Test Coverage](https://codeclimate.com/github/uu-cubitt/commands/badges/coverage.svg)](https://codeclimate.com/github/uu-cubitt/commands/coverage)
 
 ## About
