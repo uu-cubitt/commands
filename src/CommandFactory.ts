@@ -23,7 +23,6 @@ import {SetNodePropertyCommand} from "./commands/SetNodePropertyCommand";
  * Factory for creation of Commands from JSON objects.
  */
 export class CommandFactory {
-
 	/**
 	 * Attempts to create a Command from a JSON object.
 	 * 
@@ -81,7 +80,7 @@ export class CommandFactory {
 			case CommandType.SetNodeProperty:
 				return CommandFactory.parseSetNodePropertyCommand(jsonObject, keys);
 			default:
-				throw new Error("COMMAND ERROR: A command of type: " + type + ", cannot be parsed.")
+				throw new Error("COMMAND ERROR: CommandType '" + type.toString() + "' can not be parsed.");
 		}
 	}
 
@@ -95,25 +94,25 @@ export class CommandFactory {
 		for (let key in keysWithType) {
 			let type: ValidationType = keysWithType[key];
 			let val: any = object[key];
-			if (val === undefined) {
-				throw new Error("Missing " + key);
+			if (typeof(val) === "undefined") {
+				throw new Error("COMMAND ERROR: Attribute '" + key.toString() + "' is mising.");
 			}
 			switch (type) {
 				case ValidationType.Guid:
 					let guid: Common.Guid = Common.Guid.parse(val);
-					if (guid === null) {
-						throw new Error(key + " is not a valid GUID");
+					if (guid=== null) {
+						throw new Error("COMMAND ERROR: Attribute '" + key.toString() + "' is not a valid GUID.");
 					}
 					break;
 				case ValidationType.String:
 					if (val.toString().trim().length === 0) {
-						throw new Error(key + " is missing or empty");
+						throw new Error("COMMAND ERROR: Attribute '" + key.toString() + "' is missing or empty.");
 					}
 					break;
 				case ValidationType.Any:
 					break;
 				default:
-					throw new Error("COMMAND ERROR: ValidationType not implemented.");
+					throw new Error("COMMAND ERROR: ValidationType " + type.toString() + " is not valid.");
 			}
 		}
 	}
@@ -174,7 +173,7 @@ export class CommandFactory {
 			case "deletenodeproperty":
 				return CommandType.DeleteNodeProperty;
 			default:
-				throw new Error("COMMAND ERROR: Invalid CommandType.");
+				throw new Error("COMMAND ERROR: CommandType " + t.toString() + " is not valid.");
 		}
 	}
 
