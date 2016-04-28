@@ -7,3 +7,7 @@
 ## 0.6.0
 
 - Added a CommandFactory to parse commands from JSON objects.
+
+## 0.6.1
+
+- Fixed issues with a number based CommandType.
