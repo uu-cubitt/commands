@@ -30,14 +30,15 @@ export class CommandFactory {
 	 * @param jsonObject JSON Object representing the Command.
 	 */
 	public static parse(jsonObject: Object): Command {
-		if (jsonObject === undefined) {
-			throw new Error("Empty command");
+		if (typeof(jsonObject) === "undefined" || jsonObject === null) {
+			throw new Error("COMMAND ERROR: Empty object cannot be parsed.");
 		}
 
 		let typeString: string = jsonObject["type"];
-		if (typeString === undefined) {
-			throw new Error("Missing command type");
+		if (typeof(typeString) === "undefined" || typeString === null) {
+			throw new Error("COMMAND ERROR: Object has no 'type' property.");
 		}
+
 		let type: CommandType = CommandFactory.getCommandType(typeString);
 
 		let keys: Common.Dictionary<ValidationType> = {
@@ -80,9 +81,101 @@ export class CommandFactory {
 			case CommandType.SetNodeProperty:
 				return CommandFactory.parseSetNodePropertyCommand(jsonObject, keys);
 			default:
-				break;
+				throw new Error("COMMAND ERROR: A command of type: " + type + ", cannot be parsed.")
 		}
-		throw new Error("Invalid state");
+	}
+
+	/**
+	 * Validates the keys of the passed objects against the passed ValidationTypes.
+	 *
+	 * @param object Object that should be validated.
+	 * @param keysWithType Dictionary of the keys that will be validated, with as value the type of validation.
+	 */
+	protected static validateObject(object: Object, keysWithType: Common.Dictionary<ValidationType>): void {
+		for (let key in keysWithType) {
+			let type: ValidationType = keysWithType[key];
+			let val: any = object[key];
+			if (val === undefined) {
+				throw new Error("Missing " + key);
+			}
+			switch (type) {
+				case ValidationType.Guid:
+					let guid: Common.Guid = Common.Guid.parse(val);
+					if (guid === null) {
+						throw new Error(key + " is not a valid GUID");
+					}
+					break;
+				case ValidationType.String:
+					if (val.toString().trim().length === 0) {
+						throw new Error(key + " is missing or empty");
+					}
+					break;
+				case ValidationType.Any:
+					break;
+				default:
+					throw new Error("COMMAND ERROR: ValidationType not implemented.");
+			}
+		}
+	}
+
+	/**
+	 * Parses a properties object and returns a valid properties object.
+	 *
+	 * @param properties.
+	 */
+	protected static parseProperties(properties: Object): Common.Dictionary<any> {
+		if (typeof(properties) === "undefined" || properties === null) {
+			return {};
+		}
+		if (typeof(properties["type"]) !== "undefined") {
+			delete properties["type"];
+		}
+		return properties;
+	}
+
+	/**
+	 * Attempts to create a CommandType from a string.
+	 *
+	 * @param type string containing a CommandType text.
+	 */
+	protected static getCommandType(type: string): CommandType {
+		let t: string = type.toLowerCase();
+		switch (t) {
+			case "addconnector":
+				return CommandType.AddConnector;
+			case "addedge":
+				return CommandType.AddEdge;
+			case "addmodel":
+				return CommandType.AddModel;
+			case "addnode":
+				return CommandType.AddNode;
+			case "deleteconnector":
+				return CommandType.DeleteConnector;
+			case "deleteedge":
+				return CommandType.DeleteEdge;
+			case "deletemodel":
+				return CommandType.DeleteModel;
+			case "deletenode":
+				return CommandType.DeleteNode;
+			case "setconnectorproperty":
+				return CommandType.SetConnectorProperty;
+			case "setedgeproperty":
+				return CommandType.SetEdgeProperty;
+			case "setmodelproperty":
+				return CommandType.SetModelProperty;
+			case "setnodeproperty":
+				return CommandType.SetNodeProperty;
+			case "deleteconnectorproperty":
+				return CommandType.DeleteConnectorProperty;
+			case "deleteedgeproperty":
+				return CommandType.DeleteEdgeProperty;
+			case "deletemodelproperty":
+				return CommandType.DeleteModelProperty;
+			case "deletenodeproperty":
+				return CommandType.DeleteNodeProperty;
+			default:
+				throw new Error("COMMAND ERROR: Invalid CommandType.");
+		}
 	}
 
 	/**
@@ -406,102 +499,11 @@ export class CommandFactory {
 			jsonObject["propertyValue"]
 		);
 	}
-
-	/**
-	 * Validates the keys of the passed objects against the passed ValidationTypes.
-	 *
-	 * @param object Object that should be validated.
-	 * @param keysWithType Dictionary of the keys that will be validated, with as value the type of validation.
-	 */
-	protected static validateObject(object: Object, keysWithType: Common.Dictionary<ValidationType>): void {
-		for (let key in keysWithType) {
-			let type: ValidationType = keysWithType[key];
-			let val: any = object[key];
-			if (val === undefined) {
-				throw new Error("Missing " + key);
-			}
-			switch (type) {
-				case ValidationType.Guid:
-					let guid: Common.Guid = Common.Guid.parse(val);
-					if (guid === null) {
-						throw new Error(key + " is not a valid GUID");
-					}
-					break;
-				case ValidationType.String:
-					if (val.toString().trim().length === 0) {
-						throw new Error(key + " is missing or empty");
-					}
-					break;
-				case ValidationType.Any:
-					break; // Nothing to validate, it is not undefined so it is right
-				default:
-					break;
-			}
-		}
-	}
-
-	/**
-	 * Parses a properties object and returns a valid properties object.
-	 *
-	 * @param properties.
-	 */
-	protected static parseProperties(properties: Object): Common.Dictionary<any> {
-		if (properties === undefined) {
-			return {};
-		}
-		if (properties["type"] !== undefined) {
-			delete properties["type"];
-		}
-		return properties;
-	}
-
-	/**
-	 * Attempts to create a CommandType from a string.
-	 *
-	 * @param type string containing a CommandType text.
-	 */
-	protected static getCommandType(type: string): CommandType {
-		let t: string = type.toLowerCase();
-		switch (t) {
-			case "addconnector":
-				return CommandType.AddConnector;
-			case "addedge":
-				return CommandType.AddEdge;
-			case "addmodel":
-				return CommandType.AddModel;
-			case "addnode":
-				return CommandType.AddNode;
-			case "deleteconnector":
-				return CommandType.DeleteConnector;
-			case "deleteedge":
-				return CommandType.DeleteEdge;
-			case "deletemodel":
-				return CommandType.DeleteModel;
-			case "deletenode":
-				return CommandType.DeleteNode;
-			case "setconnectorproperty":
-				return CommandType.SetConnectorProperty;
-			case "setedgeproperty":
-				return CommandType.SetEdgeProperty;
-			case "setmodelproperty":
-				return CommandType.SetModelProperty;
-			case "setnodeproperty":
-				return CommandType.SetNodeProperty;
-			case "deleteconnectorproperty":
-				return CommandType.DeleteConnectorProperty;
-			case "deleteedgeproperty":
-				return CommandType.DeleteEdgeProperty;
-			case "deletemodelproperty":
-				return CommandType.DeleteModelProperty;
-			case "deletenodeproperty":
-				return CommandType.DeleteNodeProperty;
-			default:
-				throw new Error("Invalid CommandType");
-		}
-	}
-
 }
 
+/**
+ * An enum for all types of attributes that can be validated.
+ */
 export enum ValidationType {
 	Guid,
 	String,
