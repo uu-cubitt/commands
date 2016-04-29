@@ -25,7 +25,7 @@ export const CommandType: {
 	DeleteNodeProperty: CommandType
 } = {
 	AddConnector: "AddConnectorCommand" as CommandType,
-	AddEdge: "AddEdgeCommandCommand" as CommandType,
+	AddEdge: "AddEdgeCommand" as CommandType,
 	AddModel: "AddModelCommand" as CommandType,
 	AddNode: "AddNodeCommand" as CommandType,
 	DeleteConnector: "DeleteConnectorCommand" as CommandType,
