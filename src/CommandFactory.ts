@@ -188,7 +188,7 @@ export class CommandFactory {
 		keys["elementId"] = ValidationType.Guid;
 		keys["elementType"] = ValidationType.String;
 		keys["nodeId"] = ValidationType.Guid;
-		let properties: Object = CommandFactory.parseProperties(jsonObject["properties"]);
+		let properties: Object = CommandFactory.parseProperties(jsonObject["elementProperties"]);
 		CommandFactory.validateObject(jsonObject, keys);
 		return new AddConnectorCommand(
 			Common.Guid.parse(jsonObject["id"]),
@@ -213,7 +213,7 @@ export class CommandFactory {
 		keys["modelId"] = ValidationType.Guid;
 		keys["startConnectorId"] = ValidationType.Guid;
 		keys["endConnectorId"] = ValidationType.Guid;
-		let properties: Object = CommandFactory.parseProperties(jsonObject["properties"]);
+		let properties: Object = CommandFactory.parseProperties(jsonObject["elementProperties"]);
 		CommandFactory.validateObject(jsonObject, keys);
 		return new AddEdgeCommand(
 			Common.Guid.parse(jsonObject["id"]),
@@ -237,7 +237,7 @@ export class CommandFactory {
 	protected static parseAddModelCommand(jsonObject: Object, keys: Common.Dictionary<ValidationType>): AddModelCommand {
 		keys["elementId"] = ValidationType.Guid;
 		keys["elementType"] = ValidationType.String;
-		let properties: Object = CommandFactory.parseProperties(jsonObject["properties"]);
+		let properties: Object = CommandFactory.parseProperties(jsonObject["elementProperties"]);
 		CommandFactory.validateObject(jsonObject, keys);
 		return new AddModelCommand(
 			Common.Guid.parse(jsonObject["id"]),
@@ -259,7 +259,7 @@ export class CommandFactory {
 		keys["elementId"] = ValidationType.Guid;
 		keys["elementType"] = ValidationType.String;
 		keys["modelId"] = ValidationType.Guid;
-		let properties: Object = CommandFactory.parseProperties(jsonObject["properties"]);
+		let properties: Object = CommandFactory.parseProperties(jsonObject["elementProperties"]);
 		CommandFactory.validateObject(jsonObject, keys);
 		return new AddNodeCommand(
 			Common.Guid.parse(jsonObject["id"]),

@@ -79,6 +79,19 @@ describe("CommandFactory", () => {
 		done();
 	});
 
+	it("should correctly parse an DeleteConnectorCommand", (done) => {
+		let command: Commands.DeleteConnectorCommand = new Commands.DeleteConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		result["elementId"] = "invalidguid";
+		expect(function() { Commands.CommandFactory.parse(result); }).to.throw(Error);
+		done();
+	});
+
 	it("should throw an error when properties are null", (done) => {
 		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
 			Common.Guid.newGuid(),
@@ -90,7 +103,7 @@ describe("CommandFactory", () => {
 			Common.Guid.newGuid()
 		);
 		let result: Object = JSON.parse(command.toJson());
-		result["properties"] = null;
+		result["elementProperties"] = null;
 		let comm: Commands.AddConnectorCommand = <Commands.AddConnectorCommand> Commands.CommandFactory.parse(result);
 		expect(comm.elementProperties).to.empty;
 		done();
@@ -107,7 +120,7 @@ describe("CommandFactory", () => {
 			Common.Guid.newGuid()
 		);
 		let result: Object = JSON.parse(command.toJson());
-		result["elementProperties"]["type"] = "NOT_TEST_CONNECTOR";
+		result["elementProperties"]["type"] = {"test": "NOT_TEST_CONNECTOR"};
 		let comm: Commands.AddConnectorCommand = <Commands.AddConnectorCommand> Commands.CommandFactory.parse(result);
 		expect(comm.elementProperties).to.empty;
 		done();
