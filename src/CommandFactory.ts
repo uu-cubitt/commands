@@ -101,7 +101,7 @@ export class CommandFactory {
 			switch (type) {
 				case ValidationType.Guid:
 					let guid: Common.Guid = Common.Guid.parse(val);
-					if (guid=== null) {
+					if (guid === null) {
 						throw new Error("COMMAND ERROR: Attribute '" + key.toString() + "' is not a valid GUID.");
 					}
 					break;
@@ -139,42 +139,41 @@ export class CommandFactory {
 	 * @param type string containing a CommandType text.
 	 */
 	protected static getCommandType(type: string): CommandType {
-		let t: string = type.toLowerCase();
-		switch (t) {
-			case "addconnector":
+		switch (type) {
+			case "AddConnectorCommand":
 				return CommandType.AddConnector;
-			case "addedge":
+			case "AddEdgeCommand":
 				return CommandType.AddEdge;
-			case "addmodel":
+			case "AddModelCommand":
 				return CommandType.AddModel;
-			case "addnode":
+			case "AddNodeCommand":
 				return CommandType.AddNode;
-			case "deleteconnector":
+			case "DeleteConnectorCommand":
 				return CommandType.DeleteConnector;
-			case "deleteedge":
+			case "DeleteEdgeCommand":
 				return CommandType.DeleteEdge;
-			case "deletemodel":
+			case "DeleteModelCommand":
 				return CommandType.DeleteModel;
-			case "deletenode":
+			case "DeleteNodeCommand":
 				return CommandType.DeleteNode;
-			case "setconnectorproperty":
+			case "SetConnectorPropertyCommand":
 				return CommandType.SetConnectorProperty;
-			case "setedgeproperty":
+			case "SetEdgePropertyCommand":
 				return CommandType.SetEdgeProperty;
-			case "setmodelproperty":
+			case "SetModelPropertyCommand":
 				return CommandType.SetModelProperty;
-			case "setnodeproperty":
+			case "SetNodePropertyCommand":
 				return CommandType.SetNodeProperty;
-			case "deleteconnectorproperty":
+			case "DeleteConnectorPropertyCommand":
 				return CommandType.DeleteConnectorProperty;
-			case "deleteedgeproperty":
+			case "DeleteEdgePropertyCommand":
 				return CommandType.DeleteEdgeProperty;
-			case "deletemodelproperty":
+			case "DeleteModelPropertyCommand":
 				return CommandType.DeleteModelProperty;
-			case "deletenodeproperty":
+			case "DeleteNodePropertyCommand":
 				return CommandType.DeleteNodeProperty;
 			default:
-				throw new Error("COMMAND ERROR: CommandType " + t.toString() + " is not valid.");
+				throw new Error("COMMAND ERROR: CommandType " + type.toString() + " is not valid.");
 		}
 	}
 

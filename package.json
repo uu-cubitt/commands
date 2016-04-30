@@ -1,6 +1,6 @@
 {
 	"name": "cubitt-commands",
-	"version": "0.6.1",
+	"version": "0.6.2",
 	"description": "Module containing command definitions for the Cubitt framework",
 	"main": "./dist/cubitt-commands.js",
 	"typings": "./dist/cubitt-commands.d.ts",

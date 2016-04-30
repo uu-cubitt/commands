@@ -12,8 +12,12 @@
 
 - Fixed issues with a number based CommandType.
 
+## 0.6.2
+
+- Fixed CommandType typo.
+
 ## 1.0.0
 
-- Fixed typo in the CommandType enum
 - Removed (invalid?) forceConsistentCasingInFileNames option in tsconfig
 - Removed (invalid?) no-angle-bracket-type-assertion option in tsconfig
+- Added tests
