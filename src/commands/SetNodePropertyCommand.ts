@@ -23,6 +23,6 @@ export class SetNodePropertyCommand extends SetPropertyCommand {
 		propertyName: string,
 		propertyValue: any
 	) {
-		super(id, requestId, sessionId, CommandType.SetConnectorProperty, elementId, propertyName, propertyValue);
+		super(id, requestId, sessionId, CommandType.SetNodeProperty, elementId, propertyName, propertyValue);
 	}
 }

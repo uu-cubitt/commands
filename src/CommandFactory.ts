@@ -32,9 +32,7 @@ export class CommandFactory {
 		if (typeof(jsonObject) === "undefined" || jsonObject === null) {
 			throw new Error("COMMAND ERROR: Empty object cannot be parsed.");
 		}
-		console.log(typeof(jsonObject));
 		let typeString: string = jsonObject["type"];
-		console.log(jsonObject, jsonObject["type"], typeString);
 		if (typeof(typeString) === "undefined" || typeString === null) {
 			throw new Error("COMMAND ERROR: Object has no 'type' property.");
 		}
@@ -80,6 +78,7 @@ export class CommandFactory {
 				return CommandFactory.parseSetModelPropertyCommand(jsonObject, keys);
 			case CommandType.SetNodeProperty:
 				return CommandFactory.parseSetNodePropertyCommand(jsonObject, keys);
+			/* istanbul ignore next */
 			default:
 				throw new Error("COMMAND ERROR: CommandType '" + type.toString() + "' can not be parsed.");
 		}
@@ -112,6 +111,7 @@ export class CommandFactory {
 					break;
 				case ValidationType.Any:
 					break;
+				/* istanbul ignore next */
 				default:
 					throw new Error("COMMAND ERROR: ValidationType " + type.toString() + " is not valid.");
 			}
@@ -172,6 +172,7 @@ export class CommandFactory {
 				return CommandType.DeleteModelProperty;
 			case "DeleteNodePropertyCommand":
 				return CommandType.DeleteNodeProperty;
+			/* istanbul ignore next */
 			default:
 				throw new Error("COMMAND ERROR: CommandType " + type.toString() + " is not valid.");
 		}
