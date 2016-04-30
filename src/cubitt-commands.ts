@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 export {CommandFactory} from "./CommandFactory";
 export {CommandType} from "./CommandType";
 export {Command} from "./commands/Command";

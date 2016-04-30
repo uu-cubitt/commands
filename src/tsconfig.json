@@ -4,7 +4,7 @@
 		"target": "es5",
 		"module": "commonjs",
 		"noImplicitAny": true,
-		"removeComments": true,
+		"removeComments": false,
 		"noLib": false,
 		"preserveConstEnums": true,
 		"declaration": true,
@@ -13,7 +13,6 @@
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"allowUnreachableCode": false,
-		"forceConsistentCasingInFileNames": true,
 		"sourceMap": true
 	},
 	"exclude": [

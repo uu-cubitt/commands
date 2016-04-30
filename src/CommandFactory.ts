@@ -25,15 +25,16 @@ import {SetNodePropertyCommand} from "./commands/SetNodePropertyCommand";
 export class CommandFactory {
 	/**
 	 * Attempts to create a Command from a JSON object.
-	 * 
+	 *
 	 * @param jsonObject JSON Object representing the Command.
 	 */
 	public static parse(jsonObject: Object): Command {
 		if (typeof(jsonObject) === "undefined" || jsonObject === null) {
 			throw new Error("COMMAND ERROR: Empty object cannot be parsed.");
 		}
-
+		console.log(typeof(jsonObject));
 		let typeString: string = jsonObject["type"];
+		console.log(jsonObject, jsonObject["type"], typeString);
 		if (typeof(typeString) === "undefined" || typeString === null) {
 			throw new Error("COMMAND ERROR: Object has no 'type' property.");
 		}
