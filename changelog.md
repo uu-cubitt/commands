@@ -11,3 +11,7 @@
 ## 0.6.1
 
 - Fixed issues with a number based CommandType.
+
+## 0.6.2
+
+- Fixed CommandType typo.
