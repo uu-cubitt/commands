@@ -15,6 +15,104 @@ describe("CommandFactory", () => {
 		done();
 	});
 
+	it("should throw an error when the type is undefined", (done) => {
+		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			"TEST_CONNECTOR",
+			{},
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		delete result["type"];
+		expect(function() { Commands.CommandFactory.parse(result); }).to.throw(Error);
+		done();
+	});
+
+	it("should throw an error when an Guid is invalid", (done) => {
+		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			"TEST_CONNECTOR",
+			{},
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		result["elementId"] = "INVALIDGUID";
+		expect(function() { Commands.CommandFactory.parse(result); }).to.throw(Error);
+		done();
+	});
+
+	it("should throw an error when ElementType (string validation) is undefined", (done) => {
+		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			"TEST_CONNECTOR",
+			{},
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		delete result["elementType"];
+		expect(function() { Commands.CommandFactory.parse(result); }).to.throw(Error);
+		done();
+	});
+
+	it("should throw an error when ElementType (string validation) is empty", (done) => {
+		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			"TEST_CONNECTOR",
+			{},
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		result["elementType"] = "";
+		expect(function() { Commands.CommandFactory.parse(result); }).to.throw(Error);
+		done();
+	});
+
+	it("should throw an error when properties are null", (done) => {
+		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			"TEST_CONNECTOR",
+			{},
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		result["properties"] = null;
+		let comm: Commands.AddConnectorCommand = <Commands.AddConnectorCommand> Commands.CommandFactory.parse(result);
+		expect(comm.elementProperties).to.empty;
+		done();
+	});
+
+	it("should override properties['type'] when set", (done) => {
+		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			Common.Guid.newGuid(),
+			"TEST_CONNECTOR",
+			{"type" : "NOT_TEST_CONNECTOR" },
+			Common.Guid.newGuid()
+		);
+		let result: Object = JSON.parse(command.toJson());
+		result["elementProperties"]["type"] = "NOT_TEST_CONNECTOR";
+		let comm: Commands.AddConnectorCommand = <Commands.AddConnectorCommand> Commands.CommandFactory.parse(result);
+		expect(comm.elementProperties).to.empty;
+		done();
+	});
+
 	it("should correctly parse an AddConnectorCommand", (done) => {
 		let command: Commands.AddConnectorCommand = new Commands.AddConnectorCommand(
 			Common.Guid.newGuid(),
