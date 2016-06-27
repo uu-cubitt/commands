@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- Added typedoc dependency
+- Updated documentation links
+
 ## 0.5.0
 
 - Implemented a basic CQRS command library for Cubitt.

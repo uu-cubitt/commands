@@ -33,7 +33,7 @@ import * as Commands from "cubitt-commands";
 ## Documentation
 
 * [Code documentation](https://uu-cubitt.github.io/commands/)
-* [Design documentation](https://uu-cubitt.github.io/commands/design/)
+* [General documentation](https://cubitt.readme.io/docs/commands)
 
 ## For developers
 

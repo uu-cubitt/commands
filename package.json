@@ -1,6 +1,6 @@
 {
 	"name": "cubitt-commands",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Module containing command definitions for the Cubitt framework",
 	"main": "./dist/cubitt-commands.js",
 	"typings": "./dist/cubitt-commands.d.ts",
@@ -11,8 +11,7 @@
 		"test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --include-all-sources --report lcovonly -- ./dist/test/ -R spec && remap-istanbul -i ./coverage/coverage.json -o ./coverage/coverage.json -e src/cubitt-commands.ts && istanbul report lcov",
 		"dev": "npm install && npm run lint && npm run build",
 		"codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
-		"typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/",
-		"typedoc": "echo \"ERROR: This module uses typescript constructs not supported by typedoc which at the moment still uses TypeScript 1.6.2\" && exit 1"
+		"typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/"
 	},
 	"repository": {
 		"type": "git",
@@ -42,7 +41,8 @@
 		"chai": "^3.5.0",
 		"istanbul": "^0.4.3",
 		"remap-istanbul": "^0.6.3",
-		"codeclimate-test-reporter": "^0.3.1"
+		"codeclimate-test-reporter": "^0.3.1",
+		"typedoc": "^0.4.4"
 	},
 	"dependencies": {
 		"cubitt-common": "^1.0.0"
